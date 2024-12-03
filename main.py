@@ -5,8 +5,9 @@ import numpy as np
 from io import BytesIO
 from PIL import Image
 import tensorflow as tf
+from keras import layers
 from src.model import WastePredictor
-
+from keras import models
 from keras.losses import SparseCategoricalCrossentropy  # type: ignore
 
 app = FastAPI()
@@ -31,7 +32,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL = tf.keras.models.load_model("/modelsmodel.pkl", custom_objects={'SparseCategoricalCrossentropy': SparseCategoricalCrossentropy})
+model = models.Sequential([
+    layers.TFSMLayer('./models/model.pkl', call_endpoint='serving_default')
+])
+
 
 CLASS_NAMES = ["O", "R",]
 
