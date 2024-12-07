@@ -7,7 +7,6 @@ from pydantic import BaseModel
 from PIL import Image
 import tensorflow as tf
 from io import BytesIO
-import os
 import uvicorn
 
 app = FastAPI()
