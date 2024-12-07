@@ -1,11 +1,19 @@
 import numpy as np
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import HTMLResponse
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
+from pydantic import BaseModel
 from PIL import Image
 import tensorflow as tf
 from io import BytesIO
+import os
+import uvicorn
 
 app = FastAPI()
+class Item(BaseModel):
+    title: str
+    size: int
 
 # Load the pre-trained model
 MODEL = tf.keras.models.load_model('./models/my_model.h5')
@@ -35,3 +43,14 @@ async def predict(file: UploadFile = File(...)):
 @app.get("/")
 async def main():
     return HTMLResponse(content="<h1>Upload an image for prediction</h1>")
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=422,
+        content={"detail": exc.errors(), "body": exc.body},
+    )
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
