@@ -1,0 +1,285 @@
+<html>
+ <head>
+  <title>
+   Waste Segregation Model
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .hero {
+            background-image: url('https://placehold.co/1200x400');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            position: relative;
+        }
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-text {
+            color: white;
+            text-align: center;
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <nav class="bg-green-800 p-4">
+   <div class="container mx-auto flex justify-between items-center">
+    <a class="text-yellow-400 text-2xl font-bold flex items-center" href="#">
+     <img alt="Logo of Waste Segregation Model" class="h-8 w-8 inline-block mr-2" height="32" src="https://storage.googleapis.com/a1aa/image/bJESw4YOBoLyHtHlOBeeBvNZ96JifjRFoUvjZTUvuzz0D2wnA.jpg" width="32"/>
+     <span>
+      The Waste Story
+     </span>
+    </a>
+    <div class="space-x-4">
+     <a class="text-ivory hover:text-yellow-400" href="#home">
+      Home
+     </a>
+     <a class="text-ivory hover:text-yellow-400" href="#data-preprocessing">
+      Data Pre-processing
+     </a>
+     <a class="text-ivory hover:text-yellow-400" href="#prediction">
+      Prediction
+     </a>
+     <a class="text-ivory hover:text-yellow-400" href="#retraining">
+      Retraining Model
+     </a>
+    </div>
+   </div>
+  </nav>
+  <div class="hero">
+   <div class="hero-overlay">
+    <div class="hero-text">
+     <h1 class="text-4xl font-bold">
+      Welcome to the Waste Segregation Model
+     </h1>
+     <p class="mt-4 text-lg">
+      Enhancing waste separation at the source for better recycling outcomes and a cleaner environment.
+     </p>
+    </div>
+   </div>
+  </div>
+  <div class="container mx-auto p-4" id="home">
+   <div class="bg-white p-6 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold text-green-800">
+     About the Project
+    </h1>
+    <p class="mt-4 text-gray-700">
+     The Waste Segregation Model is aimed at enhancing waste separation at the source for better recycling outcomes and a cleaner environment. The project focuses on using machine learning to classify waste into two categories: 'organic' and 'recyclable'. This classification helps in predicting whether an image contains organic or recyclable waste.
+    </p>
+    <p class="mt-4 text-gray-700">
+     For more details, you can refer to the
+     <a class="text-green-800 underline" href="proposal_link">
+      project proposal
+     </a>
+     .
+    </p>
+    <div class="mt-6">
+     <h2 class="text-2xl font-semibold text-green-800">
+      Key Features
+     </h2>
+     <ul class="list-disc list-inside mt-2 text-gray-700">
+      <li>
+       Accurate waste classification using machine learning
+      </li>
+      <li>
+       Easy-to-use interface for uploading and predicting waste type
+      </li>
+      <li>
+       Detailed evaluation metrics for model performance
+      </li>
+      <li>
+       Option to retrain the model with new data
+      </li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="container mx-auto p-4" id="data-preprocessing">
+   <div class="bg-white p-6 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold text-green-800">
+     Data Pre-processing
+    </h1>
+    <h2 class="text-2xl font-semibold text-ivory mt-4 bg-green-800 p-2 rounded">
+     Data Exploratory Analysis
+    </h2>
+    <p class="mt-2 text-gray-700">
+     Loading dataset, counting number of images, class count, data distribution, plotting image size, correlations, outliers.
+    </p>
+    <img alt="Graph showing data distribution and class count" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/MqBs3vwUyxoaFxiNyw2BMHJIXEEtZESe2m0zS6VzxZDYbN8JA.jpg" width="600"/>
+    <img alt="Graph showing image size distribution" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/ePKhvCaGyHy6ek6epaNymmOgyQhBdGsw32yYoV4VPAxkt1wnA.jpg" width="600"/>
+    <img alt="Graph showing data correlations" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/AbwV6La6u2LyKVqrdiC1Iy6D0gFlgnR4Z9aQc395PZhqtGeJA.jpg" width="600"/>
+    <img alt="Graph showing data outliers" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/dkW4PrUsHsKbChUmkU2KnDfVQYrToPcmqUfDXypHArUj2a4TA.jpg" width="600"/>
+    <h2 class="text-2xl font-semibold text-ivory mt-4 bg-green-800 p-2 rounded">
+     Model Training &amp; Evaluation
+    </h2>
+    <h3 class="text-xl font-semibold text-green-600 mt-4">
+     Accuracy Loss
+    </h3>
+    <p class="mt-2 text-gray-700">
+     Explanation of accuracy loss.
+    </p>
+    <img alt="Graph showing accuracy loss over epochs" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/LlJZI0nNgPqoJJy8YZeU4tHo1hA9DdoPfzEwnYcOLC3s2a4TA.jpg" width="600"/>
+    <h3 class="text-xl font-semibold text-green-600 mt-4">
+     F1 Score
+    </h3>
+    <p class="mt-2 text-gray-700">
+     Explanation of F1 score.
+    </p>
+    <img alt="Graph showing F1 score over epochs" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/H8ybcPbiHTraGpC91CjYxVYKJCidNnv4lQUvpblwzyZstGeJA.jpg" width="600"/>
+    <h3 class="text-xl font-semibold text-green-600 mt-4">
+     Precision
+    </h3>
+    <p class="mt-2 text-gray-700">
+     Explanation of precision.
+    </p>
+    <img alt="Graph showing precision over epochs" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/1gXZys7pGcajE9riBKDN1PMKzEVsBZ5DWnRf3mjMcV9TbN8JA.jpg" width="600"/>
+    <h3 class="text-xl font-semibold text-green-600 mt-4">
+     Recall
+    </h3>
+    <p class="mt-2 text-gray-700">
+     Explanation of recall.
+    </p>
+    <img alt="Graph showing recall over epochs" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/02dN3twOLAbRLF2U6sP8F4LxZZhYTeKEKGWxEryMacaTbN8JA.jpg" width="600"/>
+   </div>
+  </div>
+  <div class="container mx-auto p-4" id="prediction">
+   <div class="bg-white p-6 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold text-green-800">
+     Prediction
+    </h1>
+    <p class="mt-4 text-gray-700">
+     Upload an image and click predict to see if the image is 'organic' or 'recyclable'.
+    </p>
+    <form class="mt-4">
+     <div class="mb-4">
+      <label class="block text-gray-700" for="formFile">
+       Upload Image
+      </label>
+      <input class="mt-2 p-2 border rounded w-full" id="formFile" type="file"/>
+     </div>
+     <button class="bg-green-800 text-ivory px-4 py-2 rounded hover:bg-green-600" type="submit">
+      Predict
+     </button>
+    </form>
+    <div class="mt-6">
+     <h2 class="text-2xl font-semibold text-green-800">
+      Recent Predictions
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      <div class="bg-gray-100 p-4 rounded-lg shadow">
+       <img alt="Sample image of organic waste" class="w-full h-32 object-cover rounded" height="200" src="https://storage.googleapis.com/a1aa/image/wQcyXmbpnbpqG9qKX3XPwnYGv6aTLrM1ZxmsURcyrULUxGeJA.jpg" width="300"/>
+       <p class="mt-2 text-gray-700">
+        Organic Waste
+       </p>
+      </div>
+      <div class="bg-gray-100 p-4 rounded-lg shadow">
+       <img alt="Sample image of recyclable waste" class="w-full h-32 object-cover rounded" height="200" src="https://storage.googleapis.com/a1aa/image/IfjiEaOYuITbMq5PNAroHhEjcc8XxHaxoEpfFJiZSQsRFb4TA.jpg" width="300"/>
+       <p class="mt-2 text-gray-700">
+        Recyclable Waste
+       </p>
+      </div>
+      <div class="bg-gray-100 p-4 rounded-lg shadow">
+       <img alt="Sample image of organic waste" class="w-full h-32 object-cover rounded" height="200" src="https://storage.googleapis.com/a1aa/image/wQcyXmbpnbpqG9qKX3XPwnYGv6aTLrM1ZxmsURcyrULUxGeJA.jpg" width="300"/>
+       <p class="mt-2 text-gray-700">
+        Organic Waste
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="container mx-auto p-4" id="retraining">
+   <div class="bg-white p-6 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold text-green-800">
+     Retraining Model
+    </h1>
+    <p class="mt-4 text-gray-700">
+     Upload multiple image files to retrain the model based on the new images.
+    </p>
+    <form class="mt-4">
+     <div class="mb-4">
+      <label class="block text-gray-700" for="formFiles">
+       Upload Images
+      </label>
+      <input class="mt-2 p-2 border rounded w-full" id="formFiles" multiple="" type="file"/>
+     </div>
+     <button class="bg-green-800 text-ivory px-4 py-2 rounded hover:bg-green-600" type="submit">
+      Retrain Model
+     </button>
+    </form>
+    <h2 class="text-2xl font-semibold text-ivory mt-4 bg-green-800 p-2 rounded">
+     Evaluation of the Retrained Model
+    </h2>
+    <h3 class="text-xl font-semibold text-green-600 mt-4">
+     Accuracy
+    </h3>
+    <img alt="Graph showing accuracy of the retrained model" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/LDsSwnIcBCIDHZ3emzqHzWoXpX53dKaqrcjmBlEMwZmXbN8JA.jpg" width="600"/>
+    <h3 class="text-xl font-semibold text-green-600 mt-4">
+     Precision
+    </h3>
+    <img alt="Graph showing precision of the retrained model" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/AJvkYyCQB06mAJq2uGosiNICCH7HSRfyDfWc4JeIF2Bbt1wnA.jpg" width="600"/>
+    <h3 class="text-xl font-semibold text-green-600 mt-4">
+     Recall
+    </h3>
+    <img alt="Graph showing recall of the retrained model" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/o5lzVl7DtXpYAleTndCG95fjp5baDOeC5dSptUAoRGFKt1wnA.jpg" width="600"/>
+    <h3 class="text-xl font-semibold text-green-600 mt-4">
+     F1 Score
+    </h3>
+    <img alt="Graph showing F1 score of the retrained model" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/D2OJCRrnkH6ef0s7NNUrpk3oIjeJgK25mKnx5GKktTwSt1wnA.jpg" width="600"/>
+    <h3 class="text-xl font-semibold text-green-600 mt-4">
+     Confusion Matrix
+    </h3>
+    <img alt="Graph showing confusion matrix of the retrained model" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/TTvqwrSRm1r3J97CFn0UyBPx34QiVVR7dnbHy63xGGzqtGeJA.jpg" width="600"/>
+    <h3 class="text-xl font-semibold text-green-600 mt-4">
+     Performance Report
+    </h3>
+    <img alt="Graph showing performance report of the retrained model" class="mt-4" height="400" src="https://storage.googleapis.com/a1aa/image/scQeHjZqjhT8N632z2mBuofgaDZs5dhgQ86VFPu8LMvk2a4TA.jpg" width="600"/>
+   </div>
+  </div>
+  <footer class="bg-green-800 text-ivory p-4 mt-8">
+   <div class="container mx-auto text-center">
+    <p>
+     © 2023 Waste Segregation Model. All rights reserved.
+    </p>
+    <div class="mt-2">
+     <a class="text-ivory hover:text-yellow-400 mx-2" href="#">
+      <i class="fab fa-facebook-f">
+      </i>
+     </a>
+     <a class="text-ivory hover:text-yellow-400 mx-2" href="#">
+      <i class="fab fa-twitter">
+      </i>
+     </a>
+     <a class="text-ivory hover:text-yellow-400 mx-2" href="#">
+      <i class="fab fa-linkedin-in">
+      </i>
+     </a>
+    </div>
+   </div>
+  </footer>
+ </body>
+</html>
