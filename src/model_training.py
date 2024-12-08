@@ -1,4 +1,5 @@
 import tensorflow as tf
+from tensorflow.keras import layers, models
 import os
 
 # Set the path to the dataset
@@ -44,6 +45,9 @@ def create_dataset(image_paths, labels):
 # Create the dataset
 train_dataset = create_dataset(image_paths, labels)
 
+# Clear the session to avoid variable conflicts
+tf.keras.backend.clear_session()
+
 # Define a simple model
 model = tf.keras.models.Sequential([
     tf.keras.layers.Flatten(input_shape=(180, 180, 3)),
@@ -51,10 +55,13 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.Dense(2)  # Assuming 2 classes: 'O' and 'R'
 ])
 
+# Create a new optimizer instance
+optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
+
 # Compile the model
-model.compile(optimizer='adam',
-              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-              metrics=['accuracy'])
+model.compile(optimizer=optimizer,
+            loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+            metrics=['accuracy'])
 
 # Train the model
 model.fit(train_dataset, epochs=10)
