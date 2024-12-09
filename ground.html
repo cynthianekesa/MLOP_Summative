@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    Waste Segregation Model
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+
+    <style>
+    body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        header:hover {
+            background-color: #45a049;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            transition: background-color 0.3s ease;
+        }
+        nav a {
+            color: white;
+            padding: 1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #575757;
+            transform: scale(1.1);
+        }
+        .container {
+            padding: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            position: relative;
+        }
+        .box {
+            background-color: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .box img {
+            max-width: 100%;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .box h3 {
+            margin-top: 0;
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .grid .box {
+            flex: 1 1 calc(33.333% - 2rem);
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+        .grid .box:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .grid .box:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .grid .box:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .box img:hover {
+            transform: scale(1.05);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input[type="file"] {
+            display: block;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .result-box {
+            background-color: #e0f7fa;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .result-box h3 {
+            margin-top: 0;
+        }
+        .fade-in-text {
+            opacity: 0;
+            animation: fadeInText 2s forwards;
+        }
+        .slide-in-text {
+            transform: translateX(-100%);
+            animation: slideInText 1s forwards;
+        }
+        .landing-section {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        .landing-section img {
+            width: 100%;
+            height: auto;
+        }
+        .landing-section .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .landing-section h2 {
+            font-size: 3rem;
+            margin: 0;
+            animation: fadeInText 2s forwards;
+        }
+        .landing-section p {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            animation: slideInText 1s forwards;
+        }
+        .use-cases {
+            background-color: #f0f0f0;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .use-cases h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .use-cases .box {
+            background-color: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .use-cases .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .use-cases .box img {
+            max-width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .use-cases .box img:hover {
+            transform: scale(1.05);
+        }
+        .benefits, .practical-use-cases {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .benefits .box, .practical-use-cases .box {
+            flex: 1;
+        }
+        .retraining-container {
+            background-color: #f0f0f0;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        .retraining-container h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .retraining-container .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .retraining-container .result-box {
+            margin-top: 2rem;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInText {
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideInText {
+            to {
+                transform: translateX(0);
+            }
+        }
+  </style>
+ </head>
+ <body>
+  <header>
+   <h1>
+    Waste Segregation Model
+   </h1>
+  </header>
+  <nav>
+   <a href="#home">
+    Home
+   </a>
+   <a href="#data-preprocessing">
+    Data Pre-processing
+   </a>
+   <a href="#prediction">
+    Prediction
+   </a>
+   <a href="#retraining">
+    Retraining Data
+   </a>
+  </nav>
+  <div class="landing-section" id="home">
+   <img alt="Background image showing waste segregation and recycling" height="800" src="https://storage.googleapis.com/a1aa/image/L78aIHLu6eQVfUrqkf9fBfW1Y1FPkvZZRJMCgvNf6QNJPiPeJA.jpg" width="1200"/>
+   <div class="overlay">
+    <h2>
+     About the Project
+    </h2>
+    <p>
+     The project is about a waste segregation model aimed at enhancing waste separation at the source for better recycling outcomes and a cleaner environment. The data contains two classes 'organic' and 'recyclable' that are used to predict whether an image contains organic or recyclable waste.
+    </p>
+   </div>
+  </div>
+  <div class="container use-cases">
+   <h3 class="fade-in-text">
+    Practical Use Cases
+   </h3>
+   <div class="practical-use-cases">
+    <div class="box">
+     <h3>
+      Automatic Sorting in Recycling Facilities
+     </h3>
+     <img alt="Image of a recycling facility with automated sorting machines" height="200" src="https://storage.googleapis.com/a1aa/image/aA4pqcQYNPqUMF0cwVweACf2oBP9Xf2YVeFMQMkMRPlR92jPB.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Integration with Smart Bins
+     </h3>
+     <img alt="Image of smart bins with sensors and waste collection optimization" height="200" src="https://storage.googleapis.com/a1aa/image/9dME45rS3g6fYqpRvoarEV1Y0kfbXNukhA1NiKHesJWSf2jPB.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Policy Development
+     </h3>
+     <img alt="Image of policy makers discussing waste management strategies" height="200" src="https://storage.googleapis.com/a1aa/image/GuedFvBnfRhmHEX4NHWM7nSBgjYjsVbkruxq72EIW2cee2jPB.jpg" width="300"/>
+    </div>
+   </div>
+   <h3 class="fade-in-text">
+    Benefits
+   </h3>
+   <div class="benefits">
+    <div class="box">
+     <h3>
+      Reduce Pollution
+     </h3>
+     <img alt="Image showing reduced pollution in a clean environment" height="200" src="https://storage.googleapis.com/a1aa/image/MiaR4j4upGbfIqMaYXCbGM1WPJuUWdGrMGftSmHEVDfxe2jPB.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Improve Resource Recovery
+     </h3>
+     <img alt="Image showing efficient resource recovery from waste" height="200" src="https://storage.googleapis.com/a1aa/image/gkQ6X8UcfDSFUyflEU91Neh4gc7L6Vsdhv6L8BryQ5f7etHfE.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Contribute to Kenya’s Sustainability Goals
+     </h3>
+     <img alt="Image showing Kenya's sustainability initiatives" height="200" src="https://storage.googleapis.com/a1aa/image/F1qrtDc41v4FGhvujIbVnJ6gLeCq9wC0m0IRddYD8Spp3e4TA.jpg" width="300"/>
+    </div>
+   </div>
+  </div>
+  <div class="container" id="data-preprocessing">
+   <h2>
+   
+    Data Pre-processing
+   </h2>
+   <div class="grid">
+    <div class="box">
+     <h3>
+      Data Overview
+     </h3>
+     <img alt="Image showing data overview" height="200" src="https://storage.googleapis.com/a1aa/image/TsmVvSEqpcL2FJsuErxcWVTf2LfWGnugaNjT3HLlr6jjv94TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Reading Through Images
+     </h3>
+     <img alt="Image showing reading through images" height="200" src="https://storage.googleapis.com/a1aa/image/njseXXuGQxWNbKkTuILjWMVdLz4GSpTYyBaWSVaDNkfWv94TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Visual Inspection
+     </h3>
+     <img alt="Image showing visual inspection of data" height="200" src="https://storage.googleapis.com/a1aa/image/WWeZWjAWKCWQOykz67GmmFjxdcBM168IRrp9CBOTiB113e4TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Duplicate Files
+     </h3>
+     <img alt="Image showing duplicate files detection" height="200" src="https://storage.googleapis.com/a1aa/image/FpvKaauDUMKwIpRfhhG4ImOFVL8JTtxu0NzeYChHeZhPf2jPB.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Transformation Pipelines
+     </h3>
+     <img alt="Image showing transformation pipelines" height="200" src="https://storage.googleapis.com/a1aa/image/1lp6UmsIdxLJCNbZRC927zQpcW5RKcjedlenSYaeihuDf2jPB.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Data Augmentation
+     </h3>
+     <img alt="Image showing data augmentation techniques" height="200" src="https://storage.googleapis.com/a1aa/image/N89s71qOB8ZjPlZCj4CNjHGBenWZSehoNek2YfdUTc5J92jPB.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Some Predictions
+     </h3>
+     <img alt="Image showing some predictions made by the model" height="200" src="https://storage.googleapis.com/a1aa/image/XKWZcc4bB573Elq008HFJLtgY2l3fj2tBXitsCHXfpXZv94TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Model Performance Metrics of Vanilla Model
+     </h3>
+     <img alt="Image showing model performance metrics of vanilla model" height="200" src="https://storage.googleapis.com/a1aa/image/8HmVBcHggAYfVanwlCPDLQTID767VJ7QCjEZGYSOyc1t3e4TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Model Performance Metrics for Optimized Model
+     </h3>
+     <img alt="Image showing model performance metrics for optimized model" height="200" src="https://storage.googleapis.com/a1aa/image/CtO9idxe9bTSQysM8UQjthuUvsl2YxifTR92Vzwuqhsfe2jPB.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Distribution of Image Dimensions vs Frequency
+     </h3>
+     <img alt="Graph showing distribution of image dimensions vs frequency" height="200" src="https://storage.googleapis.com/a1aa/image/jjoVdLxdRN7yIF7QYmKN9Uz9efUobii6F938mYfrFHhYf2jPB.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Class Distribution vs Number of Images
+     </h3>
+     <img alt="Graph showing class distribution vs number of images" height="200" src="https://storage.googleapis.com/a1aa/image/fQ85W9ALnIVf5UwYdsmIKpvDFxKDURglA7bTRox9Xtglv94TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Distribution of Image Aspect Ratios vs Frequency
+     </h3>
+     <img alt="Graph showing distribution of image aspect ratios vs frequency" height="200" src="https://storage.googleapis.com/a1aa/image/meb777UYyxxwcqIb8Zv7ik6UlqUju7Qae0v4N3SbgICmv94TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Scatter Plot of Image Dimensions vs Height (pixels)
+     </h3>
+     <img alt="Scatter plot showing image dimensions vs height in pixels" height="200" src="https://storage.googleapis.com/a1aa/image/eUzquxlB9CQxFyShgBSmdVIeQByPBMKGwySFKxOEwg7yv94TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Width Distribution by Class vs Width (pixels)
+     </h3>
+     <img alt="Graph showing width distribution by class vs width in pixels" height="200" src="https://storage.googleapis.com/a1aa/image/b8629kXRk97xO5FRzSCyYQdN4jRnaNgXeeYBZu3djZ9Xv94TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Height Distribution by Class vs Height (pixels)
+     </h3>
+     <img alt="Graph showing height distribution by class vs height in pixels" height="200" src="https://storage.googleapis.com/a1aa/image/U9oSRKLjieRpFa2WEKDh6a9dO7P0HGDT8APltmOBQ3P03e4TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Training vs Validation Accuracy
+     </h3>
+     <img alt="Graph showing training vs validation accuracy" height="200" src="https://storage.googleapis.com/a1aa/image/xL7bBNGFZ9oSCRJffg6eYo9MiDKUWed0lf13vbco4ZlOebPeJA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Training vs Validation Loss
+     </h3>
+     <img alt="Graph showing training vs validation loss" height="200" src="https://storage.googleapis.com/a1aa/image/dE0XoqvUNEZuDtYqVFV1ejCOjffywLfemCChNfBK5eds23e4TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Confusion Matrix for Vanilla Model
+     </h3>
+     <img alt="Confusion matrix for vanilla model" height="200" src="https://storage.googleapis.com/a1aa/image/uQw2J5CIBkYPAtrDBan6jAHvOnxexGCNPu7sVcscviJ43e4TA.jpg" width="300"/>
+    </div>
+    <div class="box">
+     <h3>
+      Confusion Matrix for Optimized Model
+     </h3>
+     <img alt="Confusion matrix for optimized model" height="200" src="https://storage.googleapis.com/a1aa/image/Hq7liTBAoSLlMNS92tvbf5zgyCMxVfKMPuteN60laP14e2jPB.jpg" width="300"/>
+    </div>
+   </div>
+  </div>
+
+      <style>
+          /* CSS */
+          .prediction-section {
+              background: #f9f9f9;
+              border: 1px solid #ddd;
+              border-radius: 10px;
+              padding: 2rem;
+              margin: 2rem 0;
+              text-align: center;
+              box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          }
+  
+          .prediction-section h2 {
+              color: #333;
+              font-size: 2rem;
+              margin-bottom: 1rem;
+          }
+  
+          .prediction-section p {
+              color: #555;
+              font-size: 1.1rem;
+              margin-bottom: 2rem;
+          }
+  
+          .prediction-form {
+              margin-bottom: 2rem;
+          }
+  
+          .prediction-form label {
+              font-size: 1rem;
+              color: #333;
+              display: block;
+              margin-bottom: 0.5rem;
+          }
+  
+          .prediction-form input[type="file"] {
+              display: block;
+              margin: 0 auto 1rem auto;
+              padding: 0.5rem;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+          }
+  
+          .prediction-form button {
+              background-color: #4CAF50;
+              color: white;
+              padding: 0.8rem 1.5rem;
+              font-size: 1rem;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: background-color 0.3s ease;
+          }
+  
+          .prediction-form button:hover {
+              background-color: #45a049;
+          }
+  
+          .prediction-result {
+              background: #fff;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              padding: 1rem;
+              box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+              margin-top: 1rem;
+          }
+  
+          .prediction-result h3 {
+              font-size: 1.5rem;
+              color: #333;
+              margin-bottom: 0.5rem;
+          }
+  
+          .prediction-result p {
+              font-size: 1.2rem;
+              color: #444;
+          }
+      </style>
+  </head>
+  <body>
+  
+      <!-- HTML Content -->
+      <div class="container prediction-section" id="prediction">
+          <h2>Waste Prediction</h2>
+          <p>
+              Upload an image to predict whether the waste is organic or recyclable.
+          </p>
+    
+          <div class="prediction-form">
+              <label for="imageUpload">Choose an image:</label>
+              <input type="file" id="imageUpload" accept="image/*" />
+              <button id="predictButton" type="button">Predict</button>
+          </div>
+    
+          <div class="prediction-result">
+              <h3>Prediction Result:</h3>
+              <p id="result">No prediction yet. Upload an image to get started!</p>
+              <p id="confidence"></p>
+          </div>
+      </div>
+  
+    
+    <!-- JavaScript -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+       document.getElementById('predictButton').addEventListener('click', async function() {
+           const fileInput = document.getElementById('imageUpload');
+           const file = fileInput.files[0];
+
+           // Ensure a file is selected
+           if (!file) {
+               document.getElementById('result').textContent = 'Please choose an image!';
+               return;
+           }
+
+           // Clear previous results
+           document.getElementById('result').textContent = 'Processing...';
+           document.getElementById('confidence').textContent = '';
+
+           // Prepare form data to send the file to the server
+           const formData = new FormData();
+           formData.append('file', file);
+
+           try {
+               // Send the image to the server
+               const response = await fetch('http://127.0.0.1:8000/predict', {
+                   method: 'POST',
+                   body: formData
+               });
+
+               // Check if the response is OK
+               if (!response.ok) {
+                   const errorData = await response.text();  // Get the error message from the response body
+                   throw new Error(`Server responded with an error: ${errorData}`);
+               }
+
+               // Parse the response data
+               const data = await response.json();
+
+               // Check if data is valid
+               if (data.class) {  // Updated to check for 'class' instead of 'prediction'
+                   document.getElementById('result').textContent = `Prediction: ${data.class}`;  // Updated to use 'class'
+                   document.getElementById('confidence').textContent = `Confidence: ${data.confidence.toFixed(2)}%`;
+               } else {
+                   throw new Error('Unexpected response format from the server.');
+               }
+           } catch (error) {
+               // Display the error to the user
+               console.error(error);  // Log the error in the console
+               document.getElementById('result').textContent = 'Error during prediction. Please try again.';
+               document.getElementById('confidence').textContent = '';  // Clear confidence text
+           }
+       });
+   });
+</script>
+
+
+    
+<div class="container retraining-container" id="retraining">
+    <h2>Retraining Data</h2>
+    <div class="form-group">
+      <label for="files">Upload Files for Retraining:</label>
+      <input type="file" id="files" name="files" accept="image/*" multiple required>
+    </div>
+    <div class="form-group">
+      <button id="retrain-btn">Retrain Model</button>
+    </div>
+    <div class="result-box" id="retrain-result" style="display: none;">
+      <h3>Retraining Status</h3>
+      <p id="result-message">Waiting for retraining...</p>
+    </div>
+
+
+    <h2>Evaluate Model</h2>
+    <div class="form-group">
+      <label for="evaluate-file">Upload Image for Evaluation:</label>
+      <input type="file" id="evaluate-file" name="evaluate-file">
+    </div>
+    <div class="form-group">
+      <button id="evaluate-btn">Evaluate</button>
+    </div>
+    <div class="result-box" id="evaluate-result" style="display: none;">
+      <h3>Prediction Results</h3>
+      <p>Class: <span id="predicted-class">Recyclable</span></p>
+      <p>Confidence Score: <span id="confidence-score">0.95</span></p>
+    </div>
+  </div>
+  
+  <script>
+    let selectedFiles = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+    const retrainBtn = document.getElementById("retrain-btn")
+    const retrainResult = document.getElementById("retrain-result");
+    const evaluateBtn = document.getElementById("evaluate-btn");
+    const evaluateResult = document.getElementById("evaluate-result");
+    const predictedClassSpan = document.getElementById("predicted-class");
+    const confidenceScoreSpan = document.getElementById("confidence-score");
+
+    // Retrain Model
+    document.getElementById("retrain-btn").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get the files selected by the user
+    const files = document.getElementById("files").files;
+
+    // If no files are selected, show an error message
+    if (files.length === 0) {
+        alert("Please select files to upload.");
+        return;
+    }
+
+    // Create a FormData object and append the files to it
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+        formData.append("files", files[i]);  // Matching the field name 'files' with FastAPI parameter
+    }
+
+    // Send the form data to the API endpoint
+    fetch('http://127.0.0.1:8080/retrain/', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => {
+        if (!response.ok) {
+            // Check for status and throw error if necessary
+            throw new Error('Failed to retrain model, status code: ' + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        // If the retraining was successful
+        if (data.message === "Model retrained successfully!") {
+            // Show the success message
+            document.getElementById("retrain-result").style.display = "block";
+            document.querySelector("#retrain-result p").textContent = data.message;
+        } else {
+            // Handle unexpected responses
+            alert("Unexpected response: " + (data.detail || "No message provided."));
+        }
+    })
+    .catch(error => {
+        // Handle network errors or other issues
+        document.getElementById("retrain-result").style.display = "block";
+        document.querySelector("#retrain-result p").textContent = "Error: " + error.message;
+    });
+}); 
+
+
+
+
+
+    // Evaluate Model
+    evaluateBtn.addEventListener("click", async () => {
+        const evaluateFileInput = document.getElementById("evaluate-file");
+        const file = evaluateFileInput.files[0];
+
+        if (!file) {
+            alert("Please upload an image file for evaluation.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            const response = await fetch("http://127.0.0.1:8080/evaluate/", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                alert(`Error: ${errorData.detail}`);
+                return;
+            }
+
+            const data = await response.json();
+            evaluateResult.style.display = "block";
+            predictedClassSpan.textContent = data.predicted_class;
+            confidenceScoreSpan.textContent = data.confidence.toFixed(2);
+        } catch (error) {
+            console.error("Error evaluating the model:", error);
+            alert("An error occurred while evaluating the model.");
+        }
+    });
+});
+
+</script>
+
+
+
+
+
+
+  <footer style= "background-color: #333; color: white; text-align: center; padding: 1rem 0; margin-top: 2rem;">
+    <p>&copy; 2024 Waste Segregation Model. All rights reserved.</p>
+    <div style="margin-top: 0.5rem;">
+        <a href="https://github.com/your-repo" target="_blank" style="color: white; text-decoration: none; margin: 0 0.5rem;">
+            <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://twitter.com/your-profile" target="_blank" style="color: white; text-decoration: none; margin: 0 0.5rem;">
+            <i class="fab fa-twitter"></i> Twitter
+        </a>
+        <a href="mailto:contact@wastesegregation.com" style="color: white; text-decoration: none; margin: 0 0.5rem;">
+            <i class="fas fa-envelope"></i> Contact Us
+        </a>
+    </div>
+</footer>
+</body>
+</html>
+

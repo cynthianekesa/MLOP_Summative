@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import numpy as np
 from tensorflow.keras.models import load_model
@@ -6,7 +7,19 @@ from tensorflow.keras.preprocessing.image import img_to_array
 from PIL import Image
 import io
 
+
 app = FastAPI()
+
+origins = [
+    "http://127.0.0.1:8080"
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Load the existing Keras model at the start of the application
 try:
@@ -56,7 +69,7 @@ async def retrain_model(
 
     # Save the retrained model
     model.save("models/my_model_retrained.h5")  # Save the retrained model
-
+   
     return JSONResponse(content={"message": "Model retrained successfully!"})
 
 @app.post("/evaluate/")

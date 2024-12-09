@@ -8,8 +8,22 @@ from PIL import Image
 import tensorflow as tf
 from io import BytesIO
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = [
+    "http://127.0.0.1:8000",
+]
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow requests from any origin
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all requests
+    allow_headers=["*"],  # Allow any headers
+)
 class Item(BaseModel):
     title: str
     size: int

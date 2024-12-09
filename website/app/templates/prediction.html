@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Prediction</h1>
+<form action="/predict" method="POST" enctype="multipart/form-data">
+    <label for="file">Upload an image:</label>
+    <input type="file" id="file" name="file">
+    <button type="submit">Predict</button>
+</form>
+{% if prediction %}
+<p>Prediction: {{ prediction }}</p>
+<p>Confidence Score: {{ confidence }}</p>
+{% endif %}
+{% endblock %}

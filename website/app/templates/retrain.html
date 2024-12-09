@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Retrain the Model</h1>
+<form action="/retrain" method="POST" enctype="multipart/form-data">
+    <label for="files">Upload images for retraining:</label>
+    <input type="file" id="files" name="files" multiple>
+    <button type="submit">Retrain</button>
+</form>
+
+<form action="/evaluate" method="POST" enctype="multipart/form-data">
+    <label for="file">Upload an image for evaluation:</label>
+    <input type="file" id="file" name="file">
+    <button type="submit">Evaluate</button>
+</form>
+{% if evaluation %}
+<p>Prediction: {{ evaluation['prediction'] }}</p>
+<p>Confidence Score: {{ evaluation['confidence'] }}</p>
+{% endif %}
+{% endblock %}
