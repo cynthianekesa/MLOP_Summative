@@ -28,7 +28,7 @@ image_paths, labels = load_data(DATASET_DIR)
 # Function to load and preprocess images
 def preprocess_image(image_path):
     img = tf.io.read_file(image_path)
-    img = tf.image.decode_jpeg(img, channels=3)  # Decode JPEG images
+    img = tf.image.decode_jpeg(img, channels=3) 
     img = tf.image.resize(img, [180, 180])  # Resize to 180x180
     img = img / 255.0  # Normalize to [0, 1]
     return img
@@ -52,7 +52,7 @@ tf.keras.backend.clear_session()
 model = tf.keras.models.Sequential([
     tf.keras.layers.Flatten(input_shape=(180, 180, 3)),
     tf.keras.layers.Dense(128, activation='relu'),
-    tf.keras.layers.Dense(2)  # Assuming 2 classes: 'O' and 'R'
+    tf.keras.layers.Dense(2) 
 ])
 
 # Create a new optimizer instance
@@ -67,4 +67,4 @@ model.compile(optimizer=optimizer,
 model.fit(train_dataset, epochs=10)
 
 # Save the model
-model.save('my_model.h5')  # Save the model to a file
+model.save('my_model.h5') 

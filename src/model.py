@@ -8,6 +8,7 @@ import numpy as np
 from keras import models
 from keras.layers import Dense, Flatten, Conv2D, MaxPooling2D  # Import any layers you need
 from keras import layers
+
 #Model
 IMAGE_SIZE = 224
 BATCH_SIZE = 32

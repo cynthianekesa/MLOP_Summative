@@ -14,8 +14,8 @@ def data_preprocessing():
 def prediction():
     if request.method == "POST":
         # Handle image upload and model prediction logic
-        prediction = "organic"  # Replace with model inference
-        confidence = 0.95  # Replace with actual confidence score
+        prediction = "organic"  
+        confidence = 0.95  
         return render_template("prediction.html", prediction=prediction, confidence=confidence)
     return render_template("prediction.html")
 

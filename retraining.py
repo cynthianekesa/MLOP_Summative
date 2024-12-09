@@ -23,7 +23,7 @@ app.add_middleware(
 
 # Load the existing Keras model at the start of the application
 try:
-    model = load_model("models/my_model.h5")  # Adjust the path to your model
+    model = load_model("models/my_model.h5") 
 except Exception as e:
     model = None
     print(f"Error loading model: {e}")
@@ -64,7 +64,7 @@ async def retrain_model(
     if X_new.shape[1:] != (180, 180, 3):
         raise HTTPException(status_code=400, detail=f"Expected input shape (None, 180, 180, 3), but got {X_new.shape}")
 
-    # Retrain the model (you can adjust epochs and batch size as needed)
+    # Retrain the model
     #model.fit(X_new, epochs=5, batch_size=32)
 
     # Save the retrained model
@@ -108,6 +108,3 @@ async def evaluate_model(
         "predicted_class": int(predicted_class),
         "confidence": float(confidence)
     })
-
-# To run the application, use the command:
-# uvicorn your_module_name:app --reload

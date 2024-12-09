@@ -1,4 +1,3 @@
-#Making a prediction
 import numpy as np
 for images_batch, labels_batch in test_ds.take(1):
   img_1 = images_batch[0].numpy().astype('uint8')
