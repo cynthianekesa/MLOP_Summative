@@ -12,4 +12,4 @@ class Fastapi(HttpUser):
 
     @task
     def evaluate(self):
-        self.client.post(url = "/upload/predict")
+        self.client.post(url = "/upload/evaluate")
