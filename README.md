@@ -255,14 +255,17 @@ This is how the API works:
 locust -V
    
 ````
-* Locate a file named **locustfile.py** in your current directory and then run **locust**:
+* Locate a file named **locustfile-predict.py** in the current directory and then run **locust**:
 
-* Locust will run on **http://localhost:8089** 
+* Locate a file named **locustfile-retrain.py** in the current directory and the run **locust**:
+
+* Locust will run on **http://localhost:8089** for both endpoints
 
 * Users will begin to be spwaned
 
 * Results of simulation are in the **locust-files** directory
 
+![locust-frontend](https://github.com/user-attachments/assets/c4607013-ea55-42b8-ac2c-43f1c278c307)
 
 # Contributing
 
