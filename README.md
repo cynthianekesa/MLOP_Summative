@@ -2,7 +2,7 @@
 This project aims to develop a waste image classification model using convolutional neural networks (CNN) to facilitate waste segregation at the source, specifically within the Kenyan context. With Kenya generating approximately 3.0 million tons of waste annually, and recycling rates at only 10%, improper waste management exacerbates environmental issues and waste segregation is the solution to this. The model I am going to build will classify waste into two classes: "organic" and "recyclable," leveraging machine learning image classification to enhance accuracy and efficiency in sorting, something that fills the gap in existing waste separation solutions. Practical applications for this model include automatic sorting in recycling facilities, integration with smart bins for optimized waste collection, and policy development using waste type data. By implementing this waste classification tool, the project seeks to reduce pollution, improve resource recovery, and contribute to Kenya’s sustainability goals. Here is the project proposal [PROPOSAL](https://docs.google.com/document/d/1mllo1xHEKW1wgZ1Ljzlb3vRbL5FwwkqUPO7nLZ2a8KA/edit?usp=sharing)
 
 
-# Data Pre-Processing and Model Training
+# Data Pre-Processing and Model Training(NOTEBOOK)
 
 ## Data Pre-Processing
 
@@ -189,7 +189,7 @@ A button where one can upload an image and click evaluate, which will predict th
 
 ## Retrain and Evaluate API
 
-* Link = [predict API ](https://retrainapi.onrender.com)
+* Link = [retrain API ](https://retrainapi.onrender.com)
 
 This is how the API works:
 
@@ -219,3 +219,57 @@ This is how the API works:
 
 ````
 
+# Website Deployment
+
+* Install Docker from their website and install it
+  
+* You can alternatively set up nginx or install from CMD
+
+* git clone https://github.com/cynthianekesa/MLOP_Summative.git
+
+* Navigate to the **/ webapp** directory
+
+* Run ** ** on the terminal to build a docker container
+
+* Run ** ** on the terminal to run the docker container so as to create a docker image
+
+* Navigate to the application at ** **
+
+* Alternatively, push the docker image to the docker hub for easier scalability
+
+* Or host the website on your cloud service of choice
+
+* Link to hosted website
+
+
+# Locust Flooding
+
+* Install locust
+
+````
+   pip3 install locust
+   
+````
+* Validate Installation
+````
+locust -V
+   
+````
+* Locate a file named **locustfile.py** in your current directory and then run **locust**:
+
+* Locust will run on **http://localhost:8089** 
+
+* Users will begin to be spwaned
+
+* Results of simulation are in the **locust-files** directory
+
+
+# Contributing
+
+Make a pull request before contributing
+
+# License
+
+This code was built and produced without a licence
+
+# WOOW
