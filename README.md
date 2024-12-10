@@ -221,7 +221,7 @@ This is how the API works:
 
 # Website Deployment
 
-* Install Docker from their website and install it
+* Install Docker desktop from their website and install it depending on your OS requirements 
   
 * You can alternatively set up nginx or install from CMD
 
@@ -229,17 +229,18 @@ This is how the API works:
 
 * Navigate to the **/ webapp** directory
 
-* Run ** ** on the terminal to build a docker container
+* Run **docker build -t waste-model .** on the terminal to build a docker container
 
-* Run ** ** on the terminal to run the docker container so as to create a docker image
+* Run **docker run -p 800:80 waste-model** on the terminal to run the docker container so as to create a docker image
 
-* Navigate to the application at ** **
+* Click on the URL created so as to access docker image on the localhost **http://127.0.0.1.800**
+    * On creating a docker image the display of my website was a bit spoilt. This is something to look into next time.
 
-* Alternatively, push the docker image to the docker hub for easier scalability
+* Alternatively, push the docker image to the docker hub so as to access the image url that can be shared across teams.
 
-* Or host the website on your cloud service of choice
+* Or host the docker image/ website on your cloud service of choice
 
-* Link to hosted website
+* Link to hosted docker image on docker hub:  https://hub.docker.com/r/cynthianekesa/waste-model
 
 
 # Locust Flooding
