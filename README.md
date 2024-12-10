@@ -6,22 +6,22 @@ This project aims to develop a waste image classification model using convolutio
 
 ## Data Pre-Processing
 
-### Step 1:Data Overview**
+### Step 1:Data Overview
 * Check the number of images.
 * Identify the image formats (e.g., JPEG, PNG).
 * Check the resolution and dimensions of the images.
 * Identify the classes or labels.
 
-### Step 2:Visual Inspection**
+### Step 2:Visual Inspection
 * Display a few sample images from the dataset.
 * Check for variations in image quality, resolution, and content.
 
-### Step 3:Statistical Analysis**
+### Step 3:Statistical Analysis
 * Analyze the distribution of image dimensions (e.g., height, width).
 * Analyze the class distribution.
 
 
-### Step 4:Data Quality Checks**
+### Step 4:Data Quality Checks
 * Identify missing or corrupted images.
 * Check for duplicate images.
 
