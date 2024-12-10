@@ -244,6 +244,9 @@ This is how the API works:
 
 * If you want to view the website using the hosted docker image, /git pull first and follow best practises for using docker images.
 
+* Alternatively, the site is also hosted on render at https://waste-segregation-cc1j.onrender.com/ground.html
+  
+* Live Demo: https://www.loom.com/share/4c224b37b40b41f69ce143eb779f5cd3?sid=39e93110-718e-4ece-bd41-69cf1ed8cf8a
 
 # Locust Flooding
 
