@@ -242,6 +242,8 @@ This is how the API works:
 
 * Link to hosted docker image on docker hub:  https://hub.docker.com/r/cynthianekesa/waste-model
 
+* If you want to view the website using the hosted docker image, /git pull first and follow best practises for using docker images.
+
 
 # Locust Flooding
 
